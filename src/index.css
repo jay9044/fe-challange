@@ -14,10 +14,17 @@ code {
 }
 
 .posts {
-  border: 5px solid black;
   margin: 10px;
 }
 
 .modal-card-title {
   font-size: 15px;
+}
+
+.modal-comments {
+  margin: 20px;
+}
+
+.modal-title {
+  text-decoration: underline;
 }

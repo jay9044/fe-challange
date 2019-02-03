@@ -25,12 +25,12 @@ const Modal = ({
           <button className="delete" aria-label="close" onClick={closeModal} />
         </header>
         <section className="modal-card-body">
-          Post Details: {post.body}
+          <h4 className="modal-title">Post Details</h4> {post.body}
           {showComments ? (
-            <React.Fragment>
-              <h4>Comments</h4>
+            <section className="modal-comments">
+              <h4 className="modal-title">Comments</h4>
               {filteredComments}
-            </React.Fragment>
+            </section>
           ) : null}
         </section>
         <footer className="modal-card-foot">

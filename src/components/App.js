@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import Posts from "./common/Posts";
+import Heading from "./common/Heading";
 
 class App extends Component {
   constructor(props) {
@@ -43,6 +44,7 @@ class App extends Component {
 
     return (
       <main className="App">
+        <Heading title="FrontEnd Challenge" owner="Jamal Westfield" />
         <Posts onDelete={this.handleDelete} users={users} posts={posts} />
       </main>
     );
