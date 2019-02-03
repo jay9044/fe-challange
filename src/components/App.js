@@ -32,10 +32,9 @@ class App extends Component {
   }
 
   handleDelete(post) {
-    //get all the movies except the movie passed in as the argument
-    const posts = this.state.posts.filter(j => j.id !== post.id); // filter it out of thr array
+    const posts = this.state.posts.filter(j => j.id !== post.id);
     this.setState({
-      posts // the same as doing movies: movies
+      posts
     });
   }
 

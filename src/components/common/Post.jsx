@@ -10,7 +10,7 @@ class Post extends Component {
       comments: []
     };
     this.handleToggle = this.handleToggle.bind(this);
-    this.getBadgeClasses = this.getBadgeClasses.bind(this);
+    this.handleCommentsToggle = this.handleCommentsToggle.bind(this);
   }
 
   componentDidMount() {
@@ -24,11 +24,10 @@ class Post extends Component {
 
   handleCommentsToggle() {
     this.setState({
-      showComments: !this.state.comments
+      showComments: !this.state.showComments
     });
   }
 
-  //instead of fecthing on every press
   getComments() {
     fetch("https://jsonplaceholder.typicode.com/comments")
       .then(response => response.json())
@@ -60,12 +59,10 @@ class Post extends Component {
                   See More
                 </button>
                 <Modal
-                  getBadgeClasses={this.getBadgeClasses}
                   toggleComments={this.handleCommentsToggle}
                   showComments={showComments}
                   active={openModal}
                   comments={comments}
-                  users={users}
                   post={post}
                   closeModal={this.handleToggle}
                 />

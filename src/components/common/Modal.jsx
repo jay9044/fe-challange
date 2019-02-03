@@ -1,6 +1,23 @@
 import React from "react";
 
-const Modal = ({ comments, post, active, closeModal, getBadgeClasses }) => {
+const Modal = ({
+  comments,
+  post,
+  active,
+  closeModal,
+  showComments,
+  toggleComments
+}) => {
+  const map = comments.map(comment => {
+    if (comment.postId === post.id) {
+      return (
+        <div key={comment.id}>
+          <li>{comment.body}</li>
+        </div>
+      );
+    }
+  });
+
   return (
     <div className={"modal" + (active ? "  is-active" : "")}>
       <div className="modal-background" onClick={closeModal} />
@@ -12,18 +29,14 @@ const Modal = ({ comments, post, active, closeModal, getBadgeClasses }) => {
         <section className="modal-card-body">
           Post Details: {post.body}
           <h4>Comments</h4>
-          {comments.map(comment => {
-            if (comment.postId === post.id) {
-              return (
-                <div key={comment.id}>
-                  <li>{comment.body}</li>
-                </div>
-              );
-            }
-          })}
+          {showComments ? <React.Fragment>{map}</React.Fragment> : null}
         </section>
         <footer className="modal-card-foot">
-          <button>See comments</button>
+          {showComments ? (
+            <button onClick={toggleComments}>Hide comments</button>
+          ) : (
+            <button onClick={toggleComments}>See comments</button>
+          )}
         </footer>
       </div>
     </div>
