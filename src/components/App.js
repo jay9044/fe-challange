@@ -42,9 +42,9 @@ class App extends Component {
     const { posts, users } = this.state;
 
     return (
-      <div className="App">
+      <main className="App">
         <Posts onDelete={this.handleDelete} users={users} posts={posts} />
-      </div>
+      </main>
     );
   }
 }

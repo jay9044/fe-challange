@@ -45,34 +45,56 @@ class Post extends Component {
     const { post, users, onDelete } = this.props;
     const { openModal, comments, showComments } = this.state;
     return (
-      <div className="posts">
-        {users.map(user => {
-          if (post.userId === user.id) {
-            return (
-              <React.Fragment key={user.id}>
-                <h2>Author: {user.name}</h2>
-                <p>Post Title: {post.title}</p>
-                <button className="btn-primary" onClick={() => onDelete(post)}>
-                  Remove Post
-                </button>
-                <button className="btn-primary" onClick={this.handleToggle}>
-                  See More
-                </button>
-                <Modal
-                  toggleComments={this.handleCommentsToggle}
-                  showComments={showComments}
-                  active={openModal}
-                  comments={comments}
-                  post={post}
-                  closeModal={this.handleToggle}
-                />
-              </React.Fragment>
-            );
-          }
-        })}
-      </div>
+      <section className="posts">
+        {users
+          .filter(user => post.userId === user.id)
+          .map(user => (
+            <React.Fragment key={user.id}>
+              <h2>Author: {user.name}</h2>
+              <p>Post Title: {post.title}</p>
+              <button className="btn-primary" onClick={() => onDelete(post)}>
+                Remove Post
+              </button>
+              <button className="btn-primary" onClick={this.handleToggle}>
+                See More
+              </button>
+              <Modal
+                toggleComments={this.handleCommentsToggle}
+                showComments={showComments}
+                active={openModal}
+                comments={comments}
+                post={post}
+                closeModal={this.handleToggle}
+              />
+            </React.Fragment>
+          ))}
+      </section>
     );
   }
 }
 
 export default Post;
+
+// {users.map(user => {
+//   if (post.userId === user.id) {
+//     return (
+//       <React.Fragment key={user.id}>
+//         <h2>Author: {user.name}</h2>
+//         <p>Post Title: {post.title}</p>
+//         <button className="btn-primary" onClick={() => onDelete(post)}>
+//           Remove Post
+//         </button>
+//         <button className="btn-primary" onClick={this.handleToggle}>
+//           See More
+//         </button>
+//         <Modal
+//           toggleComments={this.handleCommentsToggle}
+//           showComments={showComments}
+//           active={openModal}
+//           comments={comments}
+//           post={post}
+//           closeModal={this.handleToggle}
+//         />
+//       </React.Fragment>
+//     );
+//   }

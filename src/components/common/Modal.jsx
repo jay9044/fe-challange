@@ -8,15 +8,13 @@ const Modal = ({
   showComments,
   toggleComments
 }) => {
-  const map = comments.map(comment => {
-    if (comment.postId === post.id) {
-      return (
-        <div key={comment.id}>
-          <li>{comment.body}</li>
-        </div>
-      );
-    }
-  });
+  const filteredComments = comments
+    .filter(comment => comment.postId === post.id)
+    .map(comment => (
+      <section key={comment.id}>
+        <li>{comment.body}</li>
+      </section>
+    ));
 
   return (
     <div className={"modal" + (active ? "  is-active" : "")}>
@@ -28,8 +26,12 @@ const Modal = ({
         </header>
         <section className="modal-card-body">
           Post Details: {post.body}
-          <h4>Comments</h4>
-          {showComments ? <React.Fragment>{map}</React.Fragment> : null}
+          {showComments ? (
+            <React.Fragment>
+              <h4>Comments</h4>
+              {filteredComments}
+            </React.Fragment>
+          ) : null}
         </section>
         <footer className="modal-card-foot">
           {showComments ? (
