@@ -12,3 +12,12 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
 }
+
+.posts {
+  border: 5px solid black;
+  margin: 10px;
+}
+
+.modal-card-title {
+  font-size: 15px;
+}
